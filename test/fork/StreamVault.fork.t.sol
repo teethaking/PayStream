@@ -45,7 +45,9 @@ contract StreamVaultForkTest is Test {
     /// falling back to "tUSD8"/"2"; then asserts it matches DOMAIN_SEPARATOR() on chain.
     function _onchainDomain() internal view returns (string memory name, string memory version) {
         (name, version) = ("tUSD8", "2");
-        try TUSD8.eip712Domain() returns (bytes1, string memory n, string memory v, uint256, address, bytes32, uint256[] memory) {
+        try TUSD8.eip712Domain() returns (
+            bytes1, string memory n, string memory v, uint256, address, bytes32, uint256[] memory
+        ) {
             return (n, v);
         } catch {}
         try TUSD8.name() returns (string memory n) {
@@ -58,7 +60,9 @@ contract StreamVaultForkTest is Test {
 
     function _separator(string memory name, string memory version) internal view returns (bytes32) {
         return keccak256(
-            abi.encode(DOMAIN_TYPEHASH, keccak256(bytes(name)), keccak256(bytes(version)), block.chainid, address(TUSD8))
+            abi.encode(
+                DOMAIN_TYPEHASH, keccak256(bytes(name)), keccak256(bytes(version)), block.chainid, address(TUSD8)
+            )
         );
     }
 
@@ -80,7 +84,8 @@ contract StreamVaultForkTest is Test {
         uint256 deadline = block.timestamp + 1 hours;
         bytes32 structHash =
             keccak256(abi.encode(PERMIT_TYPEHASH, employer, address(vault), amt, TUSD8.nonces(employer), deadline));
-        (uint8 v, bytes32 r, bytes32 s) = vm.sign(employerKey, keccak256(abi.encodePacked("\x19\x01", domain, structHash)));
+        (uint8 v, bytes32 r, bytes32 s) =
+            vm.sign(employerKey, keccak256(abi.encodePacked("\x19\x01", domain, structHash)));
 
         assertEq(TUSD8.allowance(employer, address(vault)), 0);
         vm.prank(employer);
@@ -95,7 +100,8 @@ contract StreamVaultForkTest is Test {
         uint256 amt = 100 * M;
         uint256 deadline = block.timestamp + 1 hours;
         bytes32 structHash = keccak256(abi.encode(PERMIT_TYPEHASH, employer, address(vault), amt, 0, deadline));
-        (uint8 v, bytes32 r, bytes32 s) = vm.sign(employerKey, keccak256(abi.encodePacked("\x19\x01", wrong, structHash)));
+        (uint8 v, bytes32 r, bytes32 s) =
+            vm.sign(employerKey, keccak256(abi.encodePacked("\x19\x01", wrong, structHash)));
         vm.prank(employer);
         vm.expectRevert(StreamVault.NotAuthorized.selector);
         vault.depositWithPermit(amt, deadline, v, r, s);
