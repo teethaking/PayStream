@@ -29,7 +29,7 @@ contract StreamVaultTest is Test {
     address bob = address(0xB0B);
     address agent = address(0xA6E47);
 
-    uint256 constant M = 1e6; // 1 tUSD8
+    uint128 constant M = 1e6; // 1 tUSD8
 
     function setUp() public {
         (employer, employerKey) = makeAddrAndKey("employer");
