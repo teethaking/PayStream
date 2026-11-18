@@ -1,0 +1,14 @@
+# Foundry
+out/
+cache/
+broadcast/*/31337/
+# secrets
+.env
+.env.*
+!.env.example
+*.key
+# node
+node_modules/
+dist/
+coverage/
+.DS_Store
