@@ -14,3 +14,8 @@ remappings = [
 
 [rpc_endpoints]
 aevum = "https://rpc-test.qday.info"
+
+[invariant]
+runs = 256
+depth = 64
+fail_on_revert = false
