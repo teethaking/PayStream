@@ -1,0 +1,11 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        # Optional overrides; by default the app reads deployments/aevum-44005.json at build time.
+        VITE_VAULT_ADDRESS: ${VITE_VAULT_ADDRESS:-}
+        VITE_VAULT_DEPLOY_BLOCK: ${VITE_VAULT_DEPLOY_BLOCK:-}
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
