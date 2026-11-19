@@ -12,3 +12,7 @@ node_modules/
 dist/
 coverage/
 .DS_Store
+broadcast/cache/
+web/playwright-report/
+web/test-results/
+broadcast/
