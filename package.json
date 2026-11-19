@@ -7,6 +7,8 @@
     "sync": "forge build && node scripts/sync-artifacts.mjs",
     "test": "pnpm -r test",
     "build": "pnpm -r build",
-    "lint": "pnpm -r lint"
+    "lint": "pnpm -r lint",
+    "postinstall": "pnpm --filter @paystream/sdk build",
+    "agent": "pnpm --filter @paystream/agent agent"
   }
 }

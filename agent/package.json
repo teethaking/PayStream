@@ -1,0 +1,29 @@
+{
+  "name": "@paystream/agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "PayStream AI payroll agent CLI: an operator key that creates streams within on-chain caps.",
+  "bin": {
+    "paystream-agent": "./src/cli.ts"
+  },
+  "scripts": {
+    "agent": "tsx src/cli.ts",
+    "start": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@paystream/sdk": "workspace:*",
+    "viem": "^2.58.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.12"
+  }
+}

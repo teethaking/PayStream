@@ -1,0 +1,29 @@
+{
+  "$comment": "Amounts are tUSD8 decimal strings (6 decimals). start is ISO-8601 or omitted for 'now + 2 minutes'.",
+  "employer": "0xYourEmployerAddress",
+  "streams": [
+    {
+      "name": "Ada",
+      "recipient": "0x00000000000000000000000000000000000a11ce",
+      "amount": "500",
+      "cliffDays": 30,
+      "durationDays": 90,
+      "cancelable": true
+    },
+    {
+      "name": "Tobe",
+      "recipient": "0x0000000000000000000000000000000000000b0b",
+      "amount": "300",
+      "cliffDays": 30,
+      "durationDays": 90,
+      "cancelable": true
+    },
+    {
+      "name": "Contractor",
+      "recipient": "0x00000000000000000000000000000000000ca401",
+      "amount": "2500",
+      "durationDays": 14,
+      "cancelable": true
+    }
+  ]
+}
