@@ -1,0 +1,1 @@
+import{D as e}from"./cn-D8LfhttC.js";var t={name:`arrow-up-right`,size:24,node:[[`path`,{d:`M7 7h10v10`,key:`1tivn9`}],[`path`,{d:`M7 17 17 7`,key:`1vkiza`}]]};t.node;var n=e(t),r={name:`search`,size:24,node:[[`path`,{d:`m21 21-4.34-4.34`,key:`14j7rj`}],[`circle`,{cx:`11`,cy:`11`,r:`8`,key:`4ej97u`}]]};r.node;var i=e(r);export{n,i as t};
