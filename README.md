@@ -7,7 +7,7 @@ Runs on **QDay Aevum testnet (chain 44005)** with **tUSD8 test tokens only**. Un
 
 | | |
 | --- | --- |
-| Live demo | _PLACEHOLDER: filled after the web app is deployed_ |
+| Live demo | `https://teethaking.github.io/paystream/` (built static app on the `gh-pages` branch; enable it once under Settings → Pages → branch `gh-pages`, folder `/`) |
 | StreamVault (Aevum 44005) | [`0x0b92fd49ed6251d4023fa92926faa080f3492e58`](https://explorer-test.qday.info/address/0x0b92fd49ed6251d4023fa92926faa080f3492e58), deployed in [`0xfe9aaf…360b`](https://explorer-test.qday.info/tx/0xfe9aafa3baa2e3451359d9915a09f2980a5fd2552182ca3bd2bbb742ae2e360b) |
 | Demo video | _PLACEHOLDER_ |
 | Demo script | [DEMO.md](DEMO.md), with the real transaction hashes |
@@ -175,6 +175,21 @@ TESTNET ONLY); fund it from the faucet with the **Get test funds** button.
 helpers, an exact off-chain replica of the vesting and cap math, permit domain discovery with on-chain assertion,
 1,000-block chunked log fetching with backoff, and plain-language decoding for every custom error. The web app and
 the agent CLI both use it, and other Aevum builders can too.
+
+## Verification status (honest, as of the build)
+
+| Check | Result |
+| --- | --- |
+| `forge test` (unit, fuzz, invariant) | 23 passed, 1 suite skipped outside a fork |
+| `forge test --match-path 'test/fork/*' --fork-url aevum` | 4 passed against real tUSD8 |
+| Permit deposit on Aevum | Done, tx `0x3dd619…91eb` |
+| Full storyboard on Aevum | Done, every hash in [DEMO.md](DEMO.md) |
+| Production build against the live vault | Indexes real events from block 3545074, no console errors |
+| `pnpm -r test` (SDK, agent, web) | 52 + 4 + 23 passed |
+| Typecheck + ESLint + Prettier | Clean |
+| Playwright smoke tests (desktop + mobile) | 12 passed |
+| `docker compose up --build` | Image builds, app and SPA routes serve on :8080 |
+| Lighthouse scores | **Not measured.** Chrome cannot paint in the build environment used here (`NO_FCP`), so no numbers are quoted. The app is route-lazy-loaded, canvas work is capped by device and paused when hidden, and every control is labelled; please run Lighthouse yourself. |
 
 ## Known constraints
 
