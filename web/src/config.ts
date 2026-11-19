@@ -15,8 +15,8 @@ interface Deployment {
 const found = import.meta.glob<Deployment>('../../deployments/aevum-44005.json', { eager: true, import: 'default' });
 const deployment: Deployment | undefined = Object.values(found)[0];
 
-const envVault = import.meta.env.VITE_VAULT_ADDRESS as Address | undefined;
-const envBlock = import.meta.env.VITE_VAULT_DEPLOY_BLOCK as string | undefined;
+const envVault = (import.meta.env.VITE_VAULT_ADDRESS || undefined) as Address | undefined;
+const envBlock = (import.meta.env.VITE_VAULT_DEPLOY_BLOCK || undefined) as string | undefined;
 
 export const config = {
   chain: aevumTestnet,
