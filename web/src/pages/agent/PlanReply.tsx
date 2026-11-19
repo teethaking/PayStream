@@ -110,10 +110,12 @@ export function PlanReply({
   const noteId = useId();
   const burnerGas = useBalances(burner.address).data?.gas;
   const treasury = useTreasury(employer).value;
-  const ev = useMemo(
+  const live = useMemo(
     () => evaluatePlan(parse, book, pair.checkCaps, pair.now, employer),
     [parse, book, pair.checkCaps, pair.now, employer],
   );
+  const [frozen, setFrozen] = useState<typeof live>();
+  const ev = frozen ?? live;
   const unknown = ev.rows.filter((r) => !r.address).map((r) => r.label);
   const agentIsBurner = sameAddress(agent, burner.address);
   const blocked = ev.check && !ev.check.ok ? ev.check : undefined;
@@ -143,8 +145,10 @@ export function PlanReply({
       }),
     });
     setBusy(undefined);
-    if (res.ok) setSent({ hash: res.hash, by: as });
-    else if (res.error.blockedByContract) shakeGauges();
+    if (res.ok) {
+      setFrozen(ev);
+      setSent({ hash: res.hash, by: as });
+    } else if (res.error.blockedByContract) shakeGauges();
   };
 
   const blockedRow = blocked ? ev.rows[blocked.index] : undefined;
