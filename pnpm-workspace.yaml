@@ -1,0 +1,6 @@
+packages:
+  - packages/*
+  - web
+  - agent
+minimumReleaseAgeExclude:
+  - viem@2.58.1

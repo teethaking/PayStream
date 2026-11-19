@@ -1,0 +1,34 @@
+{
+  "name": "@paystream/sdk",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Typed viem helpers for PayStream (StreamVault on QDay Aevum): ABI, stream params, vesting math, 6-decimal money helpers, permit domain, chunked logs and friendly error decoding.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "viem": "^2.58.1",
+    "vitest": "^4.1.1",
+    "typescript": "~5.9.3"
+  }
+}

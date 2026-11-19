@@ -1,0 +1,12 @@
+{
+  "name": "paystream",
+  "private": true,
+  "license": "MIT",
+  "packageManager": "pnpm@12.11.2",
+  "scripts": {
+    "sync": "forge build && node scripts/sync-artifacts.mjs",
+    "test": "pnpm -r test",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
+  }
+}
