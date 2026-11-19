@@ -12,7 +12,9 @@ contract Deploy is Script {
     address constant TUSD8 = 0x456569838f1d43009A91ebA4263147Afd7233483;
 
     function run() external {
-        vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
+        string memory key = vm.envString("PRIVATE_KEY");
+        if (bytes(key).length == 64) key = string.concat("0x", key); // accept keys exported without 0x
+        vm.startBroadcast(vm.parseUint(key));
         StreamVault vault = new StreamVault(IERC20(TUSD8));
         vm.stopBroadcast();
         console.log("StreamVault:", address(vault));

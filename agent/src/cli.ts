@@ -32,6 +32,8 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const c = { dim: '\x1b[2m', bold: '\x1b[1m', green: '\x1b[32m', red: '\x1b[31m', yellow: '\x1b[33m', cyan: '\x1b[36m', reset: '\x1b[0m' };
 const paint = (color: keyof typeof c, s: string) => (process.stdout.isTTY ? c[color] + s + c.reset : s);
 const money = (v: bigint) => `${formatAmount(v)} tUSD8`;
+const isLocal = () => /127\.0\.0\.1|localhost/.test(process.env.AEVUM_RPC_URL ?? '');
+const link = (hash: Hex) => (isLocal() ? `${hash} (local fork, not on the public explorer)` : explorerTx(hash));
 
 function vaultAddress(): Address {
   const fromEnv = process.env.VAULT_ADDRESS;
@@ -45,8 +47,9 @@ function vaultAddress(): Address {
 }
 
 function agentKey(): Hex {
-  const k = process.env.AGENT_PRIVATE_KEY;
-  if (!k || !/^0x[0-9a-fA-F]{64}$/.test(k)) throw new Error('Set AGENT_PRIVATE_KEY (0x + 64 hex chars). It is read from the environment only.');
+  const raw = process.env.AGENT_PRIVATE_KEY?.trim();
+  const k = raw && !raw.startsWith('0x') ? `0x${raw}` : raw;
+  if (!k || !/^0x[0-9a-fA-F]{64}$/.test(k)) throw new Error('Set AGENT_PRIVATE_KEY (64 hex chars, 0x optional). It is read from the environment only.');
   return k as Hex;
 }
 
@@ -144,7 +147,7 @@ async function run(file?: string) {
     const { hash, receipt } = await send(wallet, vault, payroll.employer, accepted.map((a) => a.params));
     if (receipt.status !== 'success') throw new Error('reverted');
     console.log(paint('green', `\n✓ Created ${accepted.length} stream(s) in block ${receipt.blockNumber}`));
-    console.log(`  ${explorerTx(hash)}`);
+    console.log(`  ${link(hash)}`);
   } catch (e) {
     const f = toFriendlyError(e);
     console.log(paint('red', `\n✗ ${f.blockedByContract ? 'Blocked by contract: ' : ''}${f.title}`), `\n  ${f.message}`);
@@ -179,7 +182,7 @@ async function overspend() {
   console.log(paint('dim', '  broadcasting anyway so the refusal is recorded on-chain…'));
   const { hash, receipt } = await send(wallet, vault, employer, [params], true);
   console.log(receipt.status === 'reverted' ? paint('red', `\n✗ Reverted on-chain as expected: ${which} exceeded`) : paint('yellow', '\nUnexpected success'));
-  console.log(`  ${explorerTx(hash)}`);
+  console.log(`  ${link(hash)}`);
 }
 
 const [cmd, file] = process.argv.slice(2);
