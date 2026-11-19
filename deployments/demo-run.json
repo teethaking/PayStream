@@ -1,0 +1,70 @@
+{
+  "ranAt": "2026-11-19T03:40:53.732Z",
+  "chainId": 44005,
+  "vault": "0x0b92fd49ed6251d4023fa92926faa080f3492e58",
+  "streams": {
+    "id1": "7",
+    "id2": "8"
+  },
+  "transactions": {
+    "depositWithPermit": {
+      "hash": "0x3dd61933d82df122cd03286ae642a339f419da51d8111b7bf700f8628a8b91eb",
+      "status": "success",
+      "block": 3545241,
+      "explorer": "https://explorer-test.qday.info/tx/0x3dd61933d82df122cd03286ae642a339f419da51d8111b7bf700f8628a8b91eb"
+    },
+    "createStreams": {
+      "hash": "0x4254ad460feac810f9f32b64f85aaea986d0e9fa1bb511500151463711b642cd",
+      "status": "success",
+      "block": 3545245,
+      "explorer": "https://explorer-test.qday.info/tx/0x4254ad460feac810f9f32b64f85aaea986d0e9fa1bb511500151463711b642cd"
+    },
+    "setOperator": {
+      "hash": "0x574b4a473eefd3a4413dd1b321fb5a76cdbf258de91ac1faddd971c28ee7b8c0",
+      "status": "success",
+      "block": 3545359,
+      "explorer": "https://explorer-test.qday.info/tx/0x574b4a473eefd3a4413dd1b321fb5a76cdbf258de91ac1faddd971c28ee7b8c0"
+    },
+    "agent-createStreams": {
+      "hash": "0x26a43d3cecc80c5fac92cbffccc5f4f829ac562415a9bf1cad6aa601404095a3",
+      "status": "success",
+      "block": 3545363,
+      "explorer": "https://explorer-test.qday.info/tx/0x26a43d3cecc80c5fac92cbffccc5f4f829ac562415a9bf1cad6aa601404095a3"
+    },
+    "withdraw-keeper": {
+      "hash": "0x830cbead41809ec14a8cae0bdfa35d794dd9aebafab2026f5f0407676081c9f5",
+      "status": "success",
+      "block": 3545329,
+      "explorer": "https://explorer-test.qday.info/tx/0x830cbead41809ec14a8cae0bdfa35d794dd9aebafab2026f5f0407676081c9f5"
+    },
+    "revokeOperator": {
+      "hash": "0x11b1cd07789675809b8c53bd89d12196c9f2a3bdc906c039f7770ba67eede50d",
+      "status": "success",
+      "block": 3545333,
+      "explorer": "https://explorer-test.qday.info/tx/0x11b1cd07789675809b8c53bd89d12196c9f2a3bdc906c039f7770ba67eede50d"
+    },
+    "agent-after-revoke-reverted": {
+      "hash": "0x692bd3e58e0b29a262c4934ff9eeb3a2831fdc3633ed1993ad582a5f5ace50e7",
+      "status": "reverted",
+      "block": 3545336,
+      "explorer": "https://explorer-test.qday.info/tx/0x692bd3e58e0b29a262c4934ff9eeb3a2831fdc3633ed1993ad582a5f5ace50e7"
+    },
+    "cancel": {
+      "hash": "0xf4334577d6423853263f1681c665da2a8d9c06fc29b04fd544b35fb6792dc6e9",
+      "status": "success",
+      "block": 3545340,
+      "explorer": "https://explorer-test.qday.info/tx/0xf4334577d6423853263f1681c665da2a8d9c06fc29b04fd544b35fb6792dc6e9"
+    },
+    "agent-overspend-reverted": {
+      "hash": "0x0b1cac359853697a8082bcb3c2d543107ed3386fe3e404342c1f7dd545380ed4",
+      "status": "reverted",
+      "block": 3545366,
+      "explorer": "https://explorer-test.qday.info/tx/0x0b1cac359853697a8082bcb3c2d543107ed3386fe3e404342c1f7dd545380ed4"
+    }
+  },
+  "overspendRunAt": "2026-11-19T03:41:20.038Z",
+  "caps": {
+    "perStream": "0.05",
+    "daily": "0.06"
+  }
+}

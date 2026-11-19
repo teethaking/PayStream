@@ -1,0 +1,15 @@
+{
+  "chainId": 44005,
+  "network": "QDay Aevum testnet",
+  "streamVault": "0x0b92fd49ed6251d4023fa92926faa080f3492e58",
+  "token": "0x456569838f1d43009A91ebA4263147Afd7233483",
+  "deployer": "0x8c0c495669276456dbe1c160f63b0c9896a5b23c",
+  "deployTxHash": "0xfe9aafa3baa2e3451359d9915a09f2980a5fd2552182ca3bd2bbb742ae2e360b",
+  "deployBlock": 3545074,
+  "compiler": {
+    "solc": "0.8.28",
+    "evmVersion": "shanghai",
+    "optimizer": true,
+    "runs": 200
+  }
+}

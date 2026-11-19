@@ -6,8 +6,8 @@ exact deployed bytecode yourself.
 | | |
 | --- | --- |
 | Contract | `src/StreamVault.sol:StreamVault` |
-| Address (Aevum 44005) | _PLACEHOLDER: see `deployments/aevum-44005.json` after deployment_ |
-| Deploy tx | _PLACEHOLDER_ |
+| Address (Aevum 44005) | `0x0b92fd49ed6251d4023fa92926faa080f3492e58` |
+| Deploy tx | `0xfe9aafa3baa2e3451359d9915a09f2980a5fd2552182ca3bd2bbb742ae2e360b` (block 3545074) |
 | Constructor args | `(address token)` = `0x456569838f1d43009A91ebA4263147Afd7233483` |
 | Compiler | solc `0.8.28` |
 | EVM version | `shanghai` |

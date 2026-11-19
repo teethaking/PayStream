@@ -26,20 +26,23 @@ real transaction; paste its hash into the table at the end before recording the 
 | 10 | 3:30–3:40 | Audit trail | Activity page: every event with explorer links, filter by operator, **Export CSV**. | **Every action is on-chain and attributable, including what the agent did.** | "Everything is auditable: which streams the agent created, every payout, every cancel." |
 | 11 | 3:40–3:55 | Roadmap | Safety page diagram, then README roadmap | **Next: SDK on npm · ERC-8004 agent identity · ERC-4337 session keys with gas in tUSD8 · NFT streams · mainnet** | "Next: an SDK on npm, verifiable agent identities with ERC-8004, session keys with gas paid in tUSD8, and mainnet when Aevum launches." |
 
-## Transaction log (fill with real hashes before submitting)
+## Transaction log (real, run on Aevum 44005)
+
+Recorded by `agent/src/demo.mjs` (and `deployments/demo-run.json` is the machine-readable copy). The storyboard used a
+small treasury (0.275 tUSD8) because the faucet gives 5 tUSD8 per address; the app is the same at any size.
 
 | Step | Action | Tx hash | Explorer |
 | --- | --- | --- | --- |
-| 0 | Deploy StreamVault | _PLACEHOLDER_ | |
-| 3 | depositWithPermit | _PLACEHOLDER_ | |
-| 4 | createStreams (batch from assistant) | _PLACEHOLDER_ | |
-| 5 | withdraw (recipient) | _PLACEHOLDER_ | |
-| 5 | withdraw (keeper, pay it forward) | _PLACEHOLDER_ | |
-| 6 | setOperator | _PLACEHOLDER_ | |
-| 7 | createStreams by agent (within caps) | _PLACEHOLDER_ | |
-| 7 | createStreams by agent (over cap, **reverted**) | _PLACEHOLDER_ | |
-| 8 | revokeOperator | _PLACEHOLDER_ | |
-| 9 | cancel | _PLACEHOLDER_ | |
+| 0 | Deploy StreamVault | `0xfe9aafa3baa2e3451359d9915a09f2980a5fd2552182ca3bd2bbb742ae2e360b` (success, block 3545074) | [/tx/0xfe9aafa3ba](https://explorer-test.qday.info/tx/0xfe9aafa3baa2e3451359d9915a09f2980a5fd2552182ca3bd2bbb742ae2e360b) |
+| 3 | depositWithPermit | `0x3dd61933d82df122cd03286ae642a339f419da51d8111b7bf700f8628a8b91eb` (success, block 3545241) | [/tx/0x3dd61933d8](https://explorer-test.qday.info/tx/0x3dd61933d82df122cd03286ae642a339f419da51d8111b7bf700f8628a8b91eb) |
+| 4 | createStreams (batch from assistant) | `0x4254ad460feac810f9f32b64f85aaea986d0e9fa1bb511500151463711b642cd` (success, block 3545245) | [/tx/0x4254ad460f](https://explorer-test.qday.info/tx/0x4254ad460feac810f9f32b64f85aaea986d0e9fa1bb511500151463711b642cd) |
+| 5 | withdraw (recipient) | `0x830cbead41809ec14a8cae0bdfa35d794dd9aebafab2026f5f0407676081c9f5` (success, block 3545329) | [/tx/0x830cbead41](https://explorer-test.qday.info/tx/0x830cbead41809ec14a8cae0bdfa35d794dd9aebafab2026f5f0407676081c9f5) |
+| 5 | withdraw (keeper, pay it forward) | `0x830cbead41809ec14a8cae0bdfa35d794dd9aebafab2026f5f0407676081c9f5` (success, block 3545329) | [/tx/0x830cbead41](https://explorer-test.qday.info/tx/0x830cbead41809ec14a8cae0bdfa35d794dd9aebafab2026f5f0407676081c9f5) |
+| 6 | setOperator | `0x574b4a473eefd3a4413dd1b321fb5a76cdbf258de91ac1faddd971c28ee7b8c0` (success, block 3545359) | [/tx/0x574b4a473e](https://explorer-test.qday.info/tx/0x574b4a473eefd3a4413dd1b321fb5a76cdbf258de91ac1faddd971c28ee7b8c0) |
+| 7 | createStreams by agent (within caps) | `0x26a43d3cecc80c5fac92cbffccc5f4f829ac562415a9bf1cad6aa601404095a3` (success, block 3545363) | [/tx/0x26a43d3cec](https://explorer-test.qday.info/tx/0x26a43d3cecc80c5fac92cbffccc5f4f829ac562415a9bf1cad6aa601404095a3) |
+| 7 | createStreams by agent (over cap, **reverted**) | `0x0b1cac359853697a8082bcb3c2d543107ed3386fe3e404342c1f7dd545380ed4` (reverted, block 3545366) | [/tx/0x0b1cac3598](https://explorer-test.qday.info/tx/0x0b1cac359853697a8082bcb3c2d543107ed3386fe3e404342c1f7dd545380ed4) |
+| 8 | revokeOperator | `0x11b1cd07789675809b8c53bd89d12196c9f2a3bdc906c039f7770ba67eede50d` (success, block 3545333) | [/tx/0x11b1cd0778](https://explorer-test.qday.info/tx/0x11b1cd07789675809b8c53bd89d12196c9f2a3bdc906c039f7770ba67eede50d) |
+| 9 | cancel | `0xf4334577d6423853263f1681c665da2a8d9c06fc29b04fd544b35fb6792dc6e9` (success, block 3545340) | [/tx/0xf4334577d6](https://explorer-test.qday.info/tx/0xf4334577d6423853263f1681c665da2a8d9c06fc29b04fd544b35fb6792dc6e9) |
 
 ## Recording tips
 

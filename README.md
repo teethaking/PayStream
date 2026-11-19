@@ -8,9 +8,9 @@ Runs on **QDay Aevum testnet (chain 44005)** with **tUSD8 test tokens only**. Un
 | | |
 | --- | --- |
 | Live demo | _PLACEHOLDER: filled after the web app is deployed_ |
-| StreamVault (Aevum 44005) | _PLACEHOLDER: filled from `deployments/aevum-44005.json` after deployment_ |
+| StreamVault (Aevum 44005) | [`0x0b92fd49ed6251d4023fa92926faa080f3492e58`](https://explorer-test.qday.info/address/0x0b92fd49ed6251d4023fa92926faa080f3492e58), deployed in [`0xfe9aaf…360b`](https://explorer-test.qday.info/tx/0xfe9aafa3baa2e3451359d9915a09f2980a5fd2552182ca3bd2bbb742ae2e360b) |
 | Demo video | _PLACEHOLDER_ |
-| Demo script | [DEMO.md](DEMO.md) |
+| Demo script | [DEMO.md](DEMO.md), with the real transaction hashes |
 
 ## The problem
 
