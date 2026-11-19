@@ -16,7 +16,12 @@ export function RequireWallet({ children, purpose }: { children: ReactNode; purp
         body={purpose}
         action={
           <div className="flex flex-wrap justify-center gap-2">
-            <Button magnetic icon={<Wallet className="size-4" />} onClick={() => void connectInjected()} disabled={!hasInjected()}>
+            <Button
+              magnetic
+              icon={<Wallet className="size-4" />}
+              onClick={() => void connectInjected()}
+              disabled={!hasInjected()}
+            >
               Browser wallet
             </Button>
             <Button variant="secondary" icon={<FlaskConical className="size-4" />} onClick={enableBurner}>

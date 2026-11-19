@@ -5,7 +5,21 @@ import { cn } from '@/lib/cn';
 /**
  * Animated radial ring. Turns amber above 80% and rose at 100%. Changing `shakeKey` shakes it (blocked attempt).
  */
-export function RadialGauge({ fraction, size = 132, stroke = 10, label, center, shakeKey }: { fraction: number; size?: number; stroke?: number; label: string; center?: ReactNode; shakeKey?: number }) {
+export function RadialGauge({
+  fraction,
+  size = 132,
+  stroke = 10,
+  label,
+  center,
+  shakeKey,
+}: {
+  fraction: number;
+  size?: number;
+  stroke?: number;
+  label: string;
+  center?: ReactNode;
+  shakeKey?: number;
+}) {
   const reduced = useReducedMotion();
   const f = Math.min(1, Math.max(0, fraction));
   const r = (size - stroke) / 2;

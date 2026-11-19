@@ -55,7 +55,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="grid gap-6 lg:grid-cols-12">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 [&>*]:min-w-0">
       <motion.div {...enter(0)} className="lg:col-span-5">
         <TreasuryCard address={address} prefill={prefill} className="h-full" />
       </motion.div>

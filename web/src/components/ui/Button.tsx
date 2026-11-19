@@ -6,7 +6,10 @@ import { cn } from '@/lib/cn';
 type Variant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'success';
 type Size = 'sm' | 'md' | 'lg';
 
-export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onAnimationStart'> {
+export interface ButtonProps extends Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  'onDrag' | 'onDragStart' | 'onDragEnd' | 'onAnimationStart'
+> {
   variant?: Variant;
   size?: Size;
   loading?: boolean;
@@ -15,7 +18,8 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
 }
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-accent text-white shadow-[0_8px_30px_-8px_rgb(124_92_255/0.7)] hover:shadow-[0_10px_40px_-6px_rgb(34_211_238/0.6)]',
+  primary:
+    'bg-accent text-white shadow-[0_8px_30px_-8px_rgb(124_92_255/0.7)] hover:shadow-[0_10px_40px_-6px_rgb(34_211_238/0.6)]',
   secondary: 'glass text-fg hover:bg-surface-2',
   ghost: 'text-muted hover:text-fg hover:bg-surface-2',
   danger: 'bg-rose/15 text-rose ring-1 ring-rose/30 hover:bg-rose/25',
@@ -29,7 +33,18 @@ const sizes: Record<Size, string> = {
 
 /** Magnetic, rippling button. Falls back to a plain button under prefers-reduced-motion. */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { variant = 'primary', size = 'md', loading, magnetic = false, icon, className, children, onClick, disabled, ...rest },
+  {
+    variant = 'primary',
+    size = 'md',
+    loading,
+    magnetic = false,
+    icon,
+    className,
+    children,
+    onClick,
+    disabled,
+    ...rest
+  },
   ref,
 ) {
   const reduced = useReducedMotion();

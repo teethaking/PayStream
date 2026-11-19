@@ -13,9 +13,25 @@ const tones: Record<Tone, string> = {
   neutral: 'bg-surface-2 text-muted ring-line',
 };
 
-export function Badge({ tone = 'neutral', children, pulse, className }: { tone?: Tone; children: ReactNode; pulse?: boolean; className?: string }) {
+export function Badge({
+  tone = 'neutral',
+  children,
+  pulse,
+  className,
+}: {
+  tone?: Tone;
+  children: ReactNode;
+  pulse?: boolean;
+  className?: string;
+}) {
   return (
-    <span className={cn('inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset', tones[tone], className)}>
+    <span
+      className={cn(
+        'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset',
+        tones[tone],
+        className,
+      )}
+    >
       {pulse && (
         <span className="relative flex size-1.5">
           <span className="absolute inline-flex size-full animate-pulse-ring rounded-full bg-current" />
@@ -37,7 +53,12 @@ const statusMeta: Record<StreamStatus, { tone: Tone; label: string; pulse?: bool
 export function StatusChip({ status }: { status: StreamStatus }) {
   const m = statusMeta[status];
   return (
-    <motion.span key={status} initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 400, damping: 22 }}>
+    <motion.span
+      key={status}
+      initial={{ scale: 0.85, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+    >
       <Badge tone={m.tone} pulse={m.pulse}>
         {m.label}
       </Badge>

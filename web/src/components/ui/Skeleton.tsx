@@ -1,6 +1,8 @@
 import { cn } from '@/lib/cn';
 
-export const Skeleton = ({ className }: { className?: string }) => <div aria-hidden className={cn('skeleton h-4 w-full', className)} />;
+export const Skeleton = ({ className }: { className?: string }) => (
+  <div aria-hidden className={cn('skeleton h-4 w-full', className)} />
+);
 
 export function SkeletonRows({ rows = 3 }: { rows?: number }) {
   return (

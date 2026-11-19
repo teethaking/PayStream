@@ -2,7 +2,15 @@ import { useEffect, useRef } from 'react';
 import { animate, useInView, useReducedMotion } from 'framer-motion';
 
 /** Counts up to `value` when scrolled into view. `format` turns the tweened float into display text. */
-export function CountUp({ value, format = (n) => Math.round(n).toLocaleString('en-US'), className }: { value: number; format?: (n: number) => string; className?: string }) {
+export function CountUp({
+  value,
+  format = (n) => Math.round(n).toLocaleString('en-US'),
+  className,
+}: {
+  value: number;
+  format?: (n: number) => string;
+  className?: string;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
   const reduced = useReducedMotion();
@@ -23,5 +31,9 @@ export function CountUp({ value, format = (n) => Math.round(n).toLocaleString('e
     from.current = value;
     return () => c.stop();
   }, [value, inView, reduced, format]);
-  return <span ref={ref} className={className + ' font-mono tabular'}>{format(0)}</span>;
+  return (
+    <span ref={ref} className={className + ' font-mono tabular'}>
+      {format(0)}
+    </span>
+  );
 }

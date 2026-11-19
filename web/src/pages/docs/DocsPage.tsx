@@ -211,7 +211,7 @@ export default function DocsPage() {
       }
       subtitle="PayStream lets an AI agent run payroll without trusting the agent. Every limit below is enforced by the StreamVault contract, not by the app or the model's prompt."
     >
-      <div className="grid gap-12 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-16">
+      <div className="grid grid-cols-1 gap-12 [&>*]:min-w-0 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-16">
         <nav aria-label="On this page" className="hidden lg:block">
           <ul className="sticky top-24 space-y-1 border-l border-line text-sm">
             {SECTIONS.map((s) => (

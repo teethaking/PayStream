@@ -24,7 +24,12 @@ export function ConnectButton() {
 
   if (mode !== 'none' && address && wrong) {
     return (
-      <Button variant="danger" size="sm" icon={<AlertTriangle className="size-4" />} onClick={() => void switchToAevum()}>
+      <Button
+        variant="danger"
+        size="sm"
+        icon={<AlertTriangle className="size-4" />}
+        onClick={() => void switchToAevum()}
+      >
         Switch to Aevum
       </Button>
     );
@@ -33,13 +38,26 @@ export function ConnectButton() {
   return (
     <div ref={ref} className="relative">
       {mode === 'none' ? (
-        <Button size="sm" magnetic loading={connecting} icon={<Wallet className="size-4" />} onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-haspopup="menu">
+        <Button
+          size="sm"
+          magnetic
+          loading={connecting}
+          icon={<Wallet className="size-4" />}
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          aria-haspopup="menu"
+        >
           Connect
         </Button>
       ) : (
-        <button onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-haspopup="menu" className="glass flex h-9 items-center gap-2 rounded-xl px-3 text-sm">
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          aria-haspopup="menu"
+          className="glass flex h-9 items-center gap-2 rounded-xl px-3 text-sm"
+        >
           <span className={`size-2 rounded-full ${mode === 'burner' ? 'bg-amber' : 'bg-mint'}`} aria-hidden />
-          <span className="font-mono text-xs">{shortAddr(address)}</span>
+          <span className="font-mono text-xs whitespace-nowrap">{shortAddr(address)}</span>
           <ChevronDown className="size-3.5 text-muted" aria-hidden />
         </button>
       )}
@@ -83,7 +101,9 @@ export function ConnectButton() {
                   <div className="mt-2 grid grid-cols-2 gap-2 font-mono text-xs">
                     <div className="rounded-lg bg-surface-2 p-2">
                       <p className="text-faint">tQDAY</p>
-                      <p className="tabular">{balances.data ? Number(formatEther(balances.data.gas)).toFixed(4) : '…'}</p>
+                      <p className="tabular">
+                        {balances.data ? Number(formatEther(balances.data.gas)).toFixed(4) : '…'}
+                      </p>
                     </div>
                     <div className="rounded-lg bg-surface-2 p-2">
                       <p className="text-faint">tUSD8</p>
@@ -91,7 +111,12 @@ export function ConnectButton() {
                     </div>
                   </div>
                 </div>
-                <MenuItem icon={<Droplets className="size-4" />} title="Get test funds" body="Copies your address and opens the faucet." onClick={() => void openFaucet(address)} />
+                <MenuItem
+                  icon={<Droplets className="size-4" />}
+                  title="Get test funds"
+                  body="Copies your address and opens the faucet."
+                  onClick={() => void openFaucet(address)}
+                />
                 <MenuItem
                   icon={<LogOut className="size-4" />}
                   title="Disconnect"
@@ -109,9 +134,26 @@ export function ConnectButton() {
   );
 }
 
-function MenuItem({ icon, title, body, onClick, disabled }: { icon: React.ReactNode; title: string; body?: string; onClick: () => void; disabled?: boolean }) {
+function MenuItem({
+  icon,
+  title,
+  body,
+  onClick,
+  disabled,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  body?: string;
+  onClick: () => void;
+  disabled?: boolean;
+}) {
   return (
-    <button role="menuitem" disabled={disabled} onClick={onClick} className="flex w-full items-start gap-3 rounded-xl p-3 text-left transition hover:bg-surface-2 disabled:opacity-50">
+    <button
+      role="menuitem"
+      disabled={disabled}
+      onClick={onClick}
+      className="flex w-full items-start gap-3 rounded-xl p-3 text-left transition hover:bg-surface-2 disabled:opacity-50"
+    >
       <span className="mt-0.5 text-violet">{icon}</span>
       <span>
         <span className="block text-sm font-medium">{title}</span>

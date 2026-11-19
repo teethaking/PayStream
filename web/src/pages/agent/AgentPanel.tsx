@@ -68,7 +68,7 @@ function Panel({ employer }: { employer: Address }) {
   return (
     <>
       <GrantedAgents employer={employer} selected={agent} />
-      <div className="grid gap-6 lg:grid-cols-12">
+      <div className="grid grid-cols-1 gap-6 [&>*]:min-w-0 lg:grid-cols-12">
         <motion.div {...rise(0)} className="lg:col-span-7">
           <ControlCard agent={agent} pair={pair} />
         </motion.div>

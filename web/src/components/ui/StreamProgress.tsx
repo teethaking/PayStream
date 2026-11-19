@@ -35,7 +35,10 @@ export function StreamProgress({
       aria-valuemax={100}
       aria-valuenow={Math.round(v * 100)}
     >
-      <div className="relative overflow-hidden rounded-full bg-surface-2 ring-1 ring-inset ring-line" style={{ height }}>
+      <div
+        className="relative overflow-hidden rounded-full bg-surface-2 ring-1 ring-inset ring-line"
+        style={{ height }}
+      >
         <div
           className={cn('absolute inset-y-0 left-0 rounded-full', canceled ? 'bg-rose/50' : 'bg-accent')}
           style={{ width: `${v * 100}%` }}
@@ -46,7 +49,13 @@ export function StreamProgress({
             </div>
           )}
         </div>
-        {wd > 0 && <div className="absolute inset-y-0 left-0 rounded-full bg-mint/70" style={{ width: `${wd * 100}%` }} title="Withdrawn" />}
+        {wd > 0 && (
+          <div
+            className="absolute inset-y-0 left-0 rounded-full bg-mint/70"
+            style={{ width: `${wd * 100}%` }}
+            title="Withdrawn"
+          />
+        )}
       </div>
       {live && (
         <div
@@ -56,7 +65,12 @@ export function StreamProgress({
         />
       )}
       {cliffFraction > 0 && cliffFraction < 1 && (
-        <div aria-hidden className="absolute -top-1 -bottom-1 w-0.5 rounded bg-amber" style={{ left: `${cliffFraction * 100}%` }} title="Cliff" />
+        <div
+          aria-hidden
+          className="absolute -top-1 -bottom-1 w-0.5 rounded bg-amber"
+          style={{ left: `${cliffFraction * 100}%` }}
+          title="Cliff"
+        />
       )}
     </div>
   );

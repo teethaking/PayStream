@@ -154,7 +154,7 @@ function LookupLink() {
 
 function ClaimSkeleton({ progress }: { progress: number }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-5" role="status" aria-live="polite">
+    <div className="grid grid-cols-1 gap-6 [&>*]:min-w-0 lg:grid-cols-5" role="status" aria-live="polite">
       <div className="glass space-y-6 p-6 lg:col-span-3">
         <div className="flex items-center justify-between">
           <Skeleton className="h-5 w-32" />
@@ -237,7 +237,7 @@ function ClaimView({ stream }: { stream: StreamView }) {
   };
 
   return (
-    <div className="grid gap-6 lg:grid-cols-5">
+    <div className="grid grid-cols-1 gap-6 [&>*]:min-w-0 lg:grid-cols-5">
       <p className="sr-only" aria-live="polite" role="status">
         {announce} Stream status: {status}.
       </p>

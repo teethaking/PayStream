@@ -4,12 +4,20 @@ import { dismissToast, useToasts, type ToastKind } from '@/lib/toast';
 import { cn } from '@/lib/cn';
 
 const icons: Record<ToastKind, typeof Info> = { success: CheckCircle2, error: XCircle, info: Info, blocked: ShieldBan };
-const tones: Record<ToastKind, string> = { success: 'text-mint', error: 'text-amber', info: 'text-cyan', blocked: 'text-rose' };
+const tones: Record<ToastKind, string> = {
+  success: 'text-mint',
+  error: 'text-amber',
+  info: 'text-cyan',
+  blocked: 'text-rose',
+};
 
 export function Toasts() {
   const toasts = useToasts((s) => s.toasts);
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-3 z-[60] flex flex-col items-center gap-2 px-3 sm:top-4 sm:right-4 sm:left-auto sm:items-end" aria-live="assertive">
+    <div
+      className="pointer-events-none fixed inset-x-0 top-3 z-[60] flex flex-col items-center gap-2 px-3 sm:top-4 sm:right-4 sm:left-auto sm:items-end"
+      aria-live="assertive"
+    >
       <AnimatePresence>
         {toasts.map((t) => {
           const Icon = icons[t.kind];
@@ -28,12 +36,21 @@ export function Toasts() {
                 <p className="text-sm font-semibold">{t.title}</p>
                 {t.message && <p className="mt-0.5 text-xs text-muted">{t.message}</p>}
                 {t.href && (
-                  <a href={t.href} target="_blank" rel="noreferrer" className="mt-1.5 inline-flex items-center gap-1 text-xs text-cyan hover:underline">
+                  <a
+                    href={t.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-1.5 inline-flex items-center gap-1 text-xs text-cyan hover:underline"
+                  >
                     View on explorer <ExternalLink className="size-3" aria-hidden />
                   </a>
                 )}
               </div>
-              <button onClick={() => dismissToast(t.id)} className="text-faint hover:text-fg" aria-label="Dismiss notification">
+              <button
+                onClick={() => dismissToast(t.id)}
+                className="text-faint hover:text-fg"
+                aria-label="Dismiss notification"
+              >
                 <XCircle className="size-4" />
               </button>
             </motion.div>

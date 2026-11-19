@@ -4,17 +4,39 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { X } from 'lucide-react';
 
 /** Accessible modal: bottom sheet on mobile, centred dialog on desktop. Esc closes, focus is trapped and restored. */
-export function Sheet({ open, onClose, title, children, wide }: { open: boolean; onClose: () => void; title: string; children: ReactNode; wide?: boolean }) {
+export function Sheet({
+  open,
+  onClose,
+  title,
+  children,
+  wide,
+}: {
+  open: boolean;
+  onClose: () => void;
+  title: string;
+  children: ReactNode;
+  wide?: boolean;
+}) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!open) return;
     const prev = document.activeElement as HTMLElement | null;
-    const t = setTimeout(() => ref.current?.querySelector<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')?.focus(), 30);
+    const t = setTimeout(
+      () =>
+        ref.current
+          ?.querySelector<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+          ?.focus(),
+      30,
+    );
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
       if (e.key !== 'Tab' || !ref.current) return;
-      const f = [...ref.current.querySelectorAll<HTMLElement>('button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')];
+      const f = [
+        ...ref.current.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ),
+      ];
       if (!f.length) return;
       const first = f[0]!;
       const last = f[f.length - 1]!;
@@ -40,7 +62,13 @@ export function Sheet({ open, onClose, title, children, wide }: { open: boolean;
     <AnimatePresence>
       {open && (
         <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6">
-          <motion.div className="absolute inset-0 bg-black/60 backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} />
+          <motion.div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+          />
           <motion.div
             ref={ref}
             role="dialog"
@@ -54,7 +82,11 @@ export function Sheet({ open, onClose, title, children, wide }: { open: boolean;
           >
             <div className="mb-4 flex items-center justify-between gap-4">
               <h2 className="text-lg font-semibold">{title}</h2>
-              <button onClick={onClose} className="rounded-lg p-1.5 text-muted hover:bg-surface-2 hover:text-fg" aria-label="Close">
+              <button
+                onClick={onClose}
+                className="rounded-lg p-1.5 text-muted hover:bg-surface-2 hover:text-fg"
+                aria-label="Close"
+              >
                 <X className="size-5" />
               </button>
             </div>

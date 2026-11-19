@@ -12,7 +12,14 @@ import { restoreWallet } from './lib/wallet';
 import { startEventSync } from './lib/events';
 
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { retry: 3, retryDelay: (n) => Math.min(800 * 2 ** n, 10_000), refetchOnWindowFocus: false, staleTime: 5_000 } },
+  defaultOptions: {
+    queries: {
+      retry: 3,
+      retryDelay: (n) => Math.min(800 * 2 ** n, 10_000),
+      refetchOnWindowFocus: false,
+      staleTime: 5_000,
+    },
+  },
 });
 
 void restoreWallet();
@@ -22,7 +29,10 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <MotionConfig reducedMotion="user">
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <BrowserRouter
+          basename={import.meta.env.BASE_URL}
+          future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+        >
           <App />
         </BrowserRouter>
       </MotionConfig>

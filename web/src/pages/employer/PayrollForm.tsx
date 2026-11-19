@@ -174,7 +174,7 @@ export function PayrollForm({
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-12">
+      <div className="grid grid-cols-1 gap-6 [&>*]:min-w-0 lg:grid-cols-12">
         <div className="lg:col-span-7 xl:col-span-8">
           <ol ref={listRef} className="space-y-3" aria-label="Recipients">
             <AnimatePresence initial={false}>

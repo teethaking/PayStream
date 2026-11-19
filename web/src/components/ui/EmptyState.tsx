@@ -13,7 +13,13 @@ export function EmptyState({ title, body, action }: { title: string; body?: Reac
             <stop offset="1" stopColor="#22D3EE" />
           </linearGradient>
         </defs>
-        <path d="M10 46 C 50 46, 50 22, 80 22 S 110 46, 150 46" fill="none" stroke="var(--ps-border-strong)" strokeWidth="3" strokeLinecap="round" />
+        <path
+          d="M10 46 C 50 46, 50 22, 80 22 S 110 46, 150 46"
+          fill="none"
+          stroke="var(--ps-border-strong)"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
         <motion.path
           d="M10 46 C 50 46, 50 22, 80 22 S 110 46, 150 46"
           fill="none"

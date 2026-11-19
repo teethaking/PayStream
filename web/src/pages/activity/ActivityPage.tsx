@@ -97,7 +97,7 @@ export default function ActivityPage() {
         </Button>
       }
     >
-      <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
+      <div className="grid grid-cols-1 gap-6 [&>*]:min-w-0 lg:grid-cols-[320px_1fr]">
         <div className="space-y-6 lg:sticky lg:top-24 lg:self-start">
           <SyncPanel />
           <FilterPanel
