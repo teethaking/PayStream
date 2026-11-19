@@ -14,7 +14,7 @@ import { outflowSeries, type StreamView } from '@/lib/derive';
 import { config } from '@/config';
 import { fmt, fmtLive } from '@/lib/format';
 import { cn } from '@/lib/cn';
-import { ChartDefs, ChartTooltip, axisTick, fmtCompact, timeTickFormatter } from './charts';
+import { chartDefs, ChartTooltip, axisTick, fmtCompact, timeTickFormatter } from './charts';
 
 const fmtInt = (n: number) => Math.round(n).toLocaleString('en-US');
 
@@ -93,7 +93,7 @@ export function OutflowCard({
           >
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                <ChartDefs id={id} />
+                {chartDefs(id)}
                 <CartesianGrid stroke="var(--ps-border)" vertical={false} />
                 <XAxis
                   dataKey="t"

@@ -5,7 +5,7 @@ import type { StreamParams } from '@paystream/sdk';
 import { LineChart } from 'lucide-react';
 import { fmt, fmtDate } from '@/lib/format';
 import { aggregateCurve } from './payroll';
-import { ChartDefs, ChartTooltip, axisTick, fmtCompact, timeTickFormatter } from './charts';
+import { chartDefs, ChartTooltip, axisTick, fmtCompact, timeTickFormatter } from './charts';
 
 /** Aggregate vesting curve of the draft batch. Recomputed 250ms after the last edit so typing never stutters. */
 export function VestingPreview({ params }: { params: StreamParams[] }) {
@@ -38,7 +38,7 @@ export function VestingPreview({ params }: { params: StreamParams[] }) {
     >
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-          <ChartDefs id={id} />
+          {chartDefs(id)}
           <CartesianGrid stroke="var(--ps-border)" vertical={false} />
           <XAxis
             dataKey="t"

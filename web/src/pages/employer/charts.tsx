@@ -44,7 +44,8 @@ export function ChartTooltip({
 }
 
 /** Gradient defs shared by both charts. Ids must be unique per chart instance. */
-export function ChartDefs({ id }: { id: string }) {
+/** Returned as a raw <defs> element: recharts 2 drops custom components placed inside a chart. */
+export function chartDefs(id: string) {
   return (
     <defs>
       <linearGradient id={`${id}-fill`} x1="0" y1="0" x2="0" y2="1">
